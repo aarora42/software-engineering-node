@@ -1,0 +1,3 @@
+[submodule "software-engineering-react"]
+	path = software-engineering-react
+	url = https://github.com/aarora42/software-engineering-react.git
