@@ -8,7 +8,7 @@ import mongoose from "mongoose";
 
 //mongo connection
 
-mongoose.connect('mongodb://localhost:27017/tuiter').then(() => {
+mongoose.connect('mongodb+srv://anusha:fsePass@cluster0.lbwnn.mongodb.net/tuiter?retryWrites=true&w=majority').then(() => {
     console.log("Connected to DB");
 });
 const app = express();
