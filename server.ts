@@ -7,7 +7,7 @@ import mongoose from "mongoose";
 
 
 //mongo connection
-//connect
+//connect herokus
 mongoose.connect('mongodb+srv://anusha:fsePass@cluster0.lbwnn.mongodb.net/tuiter?retryWrites=true&w=majority').then(() => {
     console.log("Connected to DB");
 });
