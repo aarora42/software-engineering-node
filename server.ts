@@ -22,7 +22,7 @@ app.get('/add/:a/:b', (req, res) => {
     res.send(req.params.a + req.params.b);
 })
 const userController = UserController.getInstance(app);
-const tuitController = new TuitController(app, new TuitDao());
+const tuitController = TuitController.getInstance(app);
 
 
 const PORT = 4000;
