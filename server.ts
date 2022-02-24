@@ -21,7 +21,7 @@ app.get('/hello', (req, res) =>
 app.get('/add/:a/:b', (req, res) => {
     res.send(req.params.a + req.params.b);
 })
-const userController = new UserController(app, new UserDao());
+const userController = UserController.getInstance(app);
 const tuitController = new TuitController(app, new TuitDao());
 
 
