@@ -4,6 +4,7 @@ import TuitController from "./software-engineering-react/src/controllers/TuitCon
 import TuitDao from "./software-engineering-react/src/daos/TuitDao"
 import UserDao from "./software-engineering-react/src/daos/UserDao"
 import mongoose from "mongoose";
+import LikeController from "./software-engineering-react/src/controllers/LikeController";
 
 
 //mongo connection
@@ -23,7 +24,7 @@ app.get('/add/:a/:b', (req, res) => {
 })
 const userController = UserController.getInstance(app);
 const tuitController = TuitController.getInstance(app);
-
+const likeController = LikeController.getInstance(app);
 
 const PORT = 4000;
 app.listen(process.env.PORT || PORT);
