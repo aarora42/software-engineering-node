@@ -7,6 +7,7 @@ import mongoose from "mongoose";
 import LikeController from "./software-engineering-react/src/controllers/LikeController";
 import FollowController from "./software-engineering-react/src/controllers/FollowController";
 import BookmarkController from "./software-engineering-react/src/controllers/BookmarkController";
+import MessageController from "./software-engineering-react/src/controllers/MessageController";
 
 
 //mongo connection
@@ -28,6 +29,8 @@ const tuitController = TuitController.getInstance(app);
 const likeController = LikeController.getInstance(app);
 const followController = FollowController.getInstance(app);
 const bookmarkController = BookmarkController.getInstance(app);
+const messageController = MessageController.getInstance(app);
+
 
 const PORT = 4000;
 app.listen(process.env.PORT || PORT);
