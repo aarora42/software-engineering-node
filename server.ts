@@ -10,7 +10,6 @@ import BookmarkController from "./software-engineering-react/src/controllers/Boo
 
 
 //mongo connection
-//connect herokus
 mongoose.connect('mongodb+srv://anusha:fsePass@cluster0.lbwnn.mongodb.net/tuiter?retryWrites=true&w=majority').then(() => {
     console.log("Connected to DB");
 });
