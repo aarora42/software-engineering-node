@@ -6,6 +6,7 @@ import UserDao from "./software-engineering-react/src/daos/UserDao"
 import mongoose from "mongoose";
 import LikeController from "./software-engineering-react/src/controllers/LikeController";
 import FollowController from "./software-engineering-react/src/controllers/FollowController";
+import BookmarkController from "./software-engineering-react/src/controllers/BookmarkController";
 
 
 //mongo connection
@@ -27,6 +28,7 @@ const userController = UserController.getInstance(app);
 const tuitController = TuitController.getInstance(app);
 const likeController = LikeController.getInstance(app);
 const followController = FollowController.getInstance(app);
+const bookmarkController = BookmarkController.getInstance(app);
 
 const PORT = 4000;
 app.listen(process.env.PORT || PORT);
