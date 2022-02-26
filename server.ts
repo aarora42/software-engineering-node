@@ -1,3 +1,18 @@
+/**
+ * @file Implements an Express Node HTTP server. Declares RESTful Web services
+ * enabling CRUD operations on the following resources:
+ * <ul>
+ *     <li>users</li>
+ *     <li>tuits</li>
+ *     <li>likes</li>
+ *     <li>follows</li>
+ *     <li>bookmarks</li>
+ *     <li>messages</li>
+ * </ul>
+ *
+ * Connects to a remote MongoDB instance hosted on the Atlas cloud database
+ * service
+ */
 import express from 'express';
 import UserController from "./software-engineering-react/src/controllers/UserController";
 import TuitController from "./software-engineering-react/src/controllers/TuitController";
