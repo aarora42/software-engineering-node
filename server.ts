@@ -14,15 +14,15 @@
  * service
  */
 import express from 'express';
-import UserController from "./software-engineering-react/src/controllers/UserController";
-import TuitController from "./software-engineering-react/src/controllers/TuitController";
-import TuitDao from "./software-engineering-react/src/daos/TuitDao"
-import UserDao from "./software-engineering-react/src/daos/UserDao"
+import UserController from "./controllers/UserController";
+import TuitController from "./controllers/TuitController";
+import TuitDao from "./daos/TuitDao";
+import UserDao from "./daos/UserDao";
 import mongoose from "mongoose";
-import LikeController from "./software-engineering-react/src/controllers/LikeController";
-import FollowController from "./software-engineering-react/src/controllers/FollowController";
-import BookmarkController from "./software-engineering-react/src/controllers/BookmarkController";
-import MessageController from "./software-engineering-react/src/controllers/MessageController";
+import LikeController from "./controllers/LikeController";
+import FollowController from "./controllers/FollowController";
+import BookmarkController from "./controllers/BookmarkController";
+import MessageController from "./controllers/MessageController";
 
 
 //mongo connection
