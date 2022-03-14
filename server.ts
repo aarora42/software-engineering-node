@@ -23,7 +23,7 @@ import LikeController from "./controllers/LikeController";
 import FollowController from "./controllers/FollowController";
 import BookmarkController from "./controllers/BookmarkController";
 import MessageController from "./controllers/MessageController";
-var cors = require('cors');
+var cors = require('cors')
 
 
 //mongo connection with check
