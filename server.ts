@@ -26,7 +26,7 @@ import MessageController from "./controllers/MessageController";
 var cors = require('cors')
 
 
-//mongo connection with check
+//mongo connection
 mongoose.connect('mongodb+srv://anusha:fsePass@cluster0.lbwnn.mongodb.net/tuiter?retryWrites=true&w=majority').then(() => {
     console.log("Connected to DB");
 });
