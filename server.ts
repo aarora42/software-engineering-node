@@ -23,6 +23,7 @@ import LikeController from "./controllers/LikeController";
 import FollowController from "./controllers/FollowController";
 import BookmarkController from "./controllers/BookmarkController";
 import MessageController from "./controllers/MessageController";
+var cors = require('cors');
 
 
 //mongo connection
@@ -31,7 +32,7 @@ mongoose.connect('mongodb+srv://anusha:fsePass@cluster0.lbwnn.mongodb.net/tuiter
 });
 const app = express();
 app.use(express.json());
-
+app.use(cors());
 
 app.get('/hello', (req, res) =>
     res.send('Hello World!'));
