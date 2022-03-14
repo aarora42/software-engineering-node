@@ -41,6 +41,8 @@ export default class UserController implements UserControllerI {
                 UserController.userController.deleteUser);
             app.get("/api/users/delete",
                 UserController.userController.deleteAllUsers);
+            app.get("/api/users/username/:username/delete",
+                UserController.userController.deleteUsersByUsername);
 
             // RESTful User Web service API
             app.get("/api/users",
@@ -116,6 +118,17 @@ export default class UserController implements UserControllerI {
     deleteUser = (req: Request, res: Response) =>
         UserController.userDao.deleteUser(req.params.uid)
             .then((status) => res.send(status));
+
+    /**
+     * Removes all user instance from the database with given username
+     * @param {Request} req Represents request from client, including path
+     * parameter username identifying the primary key of the user to be removed
+     * @param {Response} res Represents response to client, including status
+     * on whether deleting a user was successful or not
+     */
+    deleteUsersByUsername = (req: Request, res: Response) =>
+        UserController.userDao.deleteUsersByUsername(req.params.username)
+            .then(status => res.send(status));
 
     /**
      * Removes all user instances from the database. Useful for testing
