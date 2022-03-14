@@ -9,7 +9,6 @@
  *     <li>bookmarks</li>
  *     <li>messages</li>
  * </ul>
- *
  * Connects to a remote MongoDB instance hosted on the Atlas cloud database
  * service
  */
