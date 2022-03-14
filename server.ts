@@ -31,7 +31,6 @@ mongoose.connect('mongodb+srv://anusha:fsePass@cluster0.lbwnn.mongodb.net/tuiter
     console.log("Connected to DB");
 });
 
-
 const app = express();
 app.use(express.json());
 app.use(cors());
