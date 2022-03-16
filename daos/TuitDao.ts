@@ -60,9 +60,9 @@ export default class TuitDao implements TuitDaoI{
      * @param {Tuit} tuit User object containing properties and their new values
      * @returns Promise To be notified when tuit is updated in the database
      */
-    updateTuit = async (uid: string, tuit: Tuit): Promise<any> =>
+    updateTuit = async (tid: string, tuit: Tuit): Promise<any> =>
         TuitModel.updateOne(
-            {_id: uid},
+            {_id: tid},
             {$set: tuit});
     /**
      * Removes tuit from the database.
