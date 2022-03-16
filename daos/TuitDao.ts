@@ -36,7 +36,7 @@ export default class TuitDao implements TuitDaoI{
      * @returns Promise To be notified when the tuits are retrieved from
      * database
      */
-    findTuitsByUser = async (uid: string): Promise<Tuit[]> =>
+    findTuitByUser = async (uid: string): Promise<Tuit[]> =>
         TuitModel.find({postedBy: uid});
     /**
      * Uses TuitModel to retrieve tuit by its primary key
@@ -52,7 +52,7 @@ export default class TuitDao implements TuitDaoI{
      * @param {Tuit} tuit Instance to be inserted into the database
      * @returns Promise To be notified when tuit is inserted into the database
      */
-    createTuitByUser = async (uid: string, tuit: Tuit): Promise<Tuit> =>
+    createTuit = async (uid: string, tuit: Tuit): Promise<Tuit> =>
         TuitModel.create({...tuit, postedBy: uid});
     /**
      * Updates tuit with new values in database
