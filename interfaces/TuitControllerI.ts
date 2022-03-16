@@ -1,7 +1,7 @@
 import {Request, Response} from "express";
 
 /**
- * @file Declares RESTful API for Tuit resource.
+ * @file Declares RESTful API for Tuit resource
  */
 export default interface TuitControllerI {
     findAllTuits(req: Request, res: Response): void;
