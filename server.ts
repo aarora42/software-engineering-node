@@ -48,7 +48,7 @@ const bookmarkController = BookmarkController.getInstance(app);
 const messageController = MessageController.getInstance(app);
 const session = require("express-session");
 
-const app = express();
+
 let sess = {
     secret: process.env.SECRET,
     cookie: {
