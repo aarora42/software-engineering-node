@@ -46,6 +46,22 @@ const likeController = LikeController.getInstance(app);
 const followController = FollowController.getInstance(app);
 const bookmarkController = BookmarkController.getInstance(app);
 const messageController = MessageController.getInstance(app);
+const session = require("express-session");
+
+const app = express();
+let sess = {
+    secret: process.env.SECRET,
+    cookie: {
+        secure: false
+    }
+}
+
+if (process.env.ENV === 'PRODUCTION') {
+    app.set('trust proxy', 1) // trust first proxy
+    sess.cookie.secure = true // serve secure cookies
+}
+
+
 
 
 const PORT = 4000;
