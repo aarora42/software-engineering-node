@@ -12,6 +12,7 @@
  * Connects to a remote MongoDB instance hosted on the Atlas cloud database
  * service
  */
+
 import express from 'express';
 import UserController from "./controllers/UserController";
 import TuitController from "./controllers/TuitController";
@@ -37,7 +38,17 @@ const app = express();
 app.use(cors({
     credentials: true,
     origin: 'http://localhost:3000'
+
 }));
+app.use((req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.header(
+        "Access-Control-Allow-Headers",
+        "Origin, X-Requested-With, Content-Type, Accept"
+    );
+    next();
+});
+
 let sess = {
     secret: process.env.SECRET,
     proxy: true,
