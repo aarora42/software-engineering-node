@@ -14,10 +14,11 @@ const AuthenticationController = (app: Express) => {
         console.log(password)
         const existingUser = await userDao
             .findUserByUsername(req.body.username);
-        const match = await bcrypt.compare(password, existingUser.password);
+        // const match = await bcrypt.compare(password, existingUser.password);
+        const stringMatch = password === existingUser.password;
 console.log(password);
 console.log(existingUser.password);
-        if (match) {
+        if (stringMatch) {
             existingUser.password = '*****';
             // @ts-ignore
             req.session['profile'] = existingUser;
