@@ -28,27 +28,28 @@ var cors = require('cors')
 const session = require("express-session");
 
 
-
-//mongo connection
-mongoose.connect('mongodb+srv://anusha:fsePass@cluster0.lbwnn.mongodb.net/tuiter?retryWrites=true&w=majority').then(() => {
-    console.log("Connected to DB");
-});
-
-const app = express();
-app.use((req, res, next) => {
-    res.setHeader("Access-Control-Allow-Origin", 'http://localhost:3000');
-    res.header(
-        "Access-Control-Allow-Headers",
-        "Origin, X-Requested-With, Content-Type, Accept"
-    );
-    next();
-});
-
 app.use(cors({
     credentials: true,
     origin: 'http://localhost:3000'
 
 }));
+//mongo connection
+mongoose.connect('mongodb+srv://anusha:fsePass@cluster0.lbwnn.mongodb.net/tuiter?retryWrites=true&w=majority').then(() => {
+    console.log("Connected to DB");
+});
+
+//
+// const app = express();
+// app.use((req, res, next) => {
+//     res.setHeader("Access-Control-Allow-Origin", 'http://localhost:3000');
+//     res.header(
+//         "Access-Control-Allow-Headers",
+//         "Origin, X-Requested-With, Content-Type, Accept"
+//     );
+//     next();
+// });
+
+
 
 
 let sess = {
