@@ -12,7 +12,9 @@ const userDao: UserDao = UserDao.getInstance();
 // const connectionString = `${PROTOCOL}://${DB_USERNAME}:${DB_PASSWORD}@${HOST}/${DB_NAME}?${DB_QUERY}`;
 // // connect to the database
 // mongoose.connect(connectionString);
-
+mongoose.connect('mongodb+srv://anusha:fsePass@cluster0.lbwnn.mongodb.net/tuiter?retryWrites=true&w=majority').then(() => {
+    console.log("Connected to DB");
+});
 
 export const login = async (u: string, p: string) => {
     try {
