@@ -36,7 +36,7 @@ mongoose.connect('mongodb+srv://anusha:fsePass@cluster0.lbwnn.mongodb.net/tuiter
 const app = express();
 app.use(cors({
     credentials: true,
-    origin: ["http://localhost:3000", 'https://distracted-bohr-46decc.netlify.app/']
+    origin: 'http://localhost:3000'
 }));
 let sess = {
     secret: process.env.SECRET,
