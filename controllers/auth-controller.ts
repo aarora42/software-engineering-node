@@ -32,6 +32,7 @@ console.log(existingUser.password);
         const password = newUser.password;
         const hash = await bcrypt.hash(password, saltRounds);
         newUser.password = hash;
+        console.log(hash);
 
         const existingUser = await userDao
             .findUserByUsername(req.body.username);
