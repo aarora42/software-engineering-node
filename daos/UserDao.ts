@@ -93,6 +93,6 @@ export default class UserDao implements UserDaoI {
         UserModel.findOne({username: username, password: password});
 
     findUserByUsername = async (username: string): Promise<any> =>
-        UserModel.findOne({username});
+        UserModel.findOne({username: username});
 
 };

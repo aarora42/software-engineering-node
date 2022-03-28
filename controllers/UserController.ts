@@ -49,8 +49,6 @@ export default class UserController implements UserControllerI {
                 UserController.userController.findAllUsers);
             app.get("/api/users/:uid",
                 UserController.userController.findUserById);
-            // app.get("/api/users/:username",
-            //     UserController.userController.findUserByUsername);
             app.post("/api/users",
                 UserController.userController.createUser);
             app.put("/api/users/:uid",
