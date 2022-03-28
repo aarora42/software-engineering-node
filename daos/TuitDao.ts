@@ -86,4 +86,10 @@ export default class TuitDao implements TuitDaoI{
             .sort({'postedOn': -1})
             .populate("postedBy")
             .exec();
+
+    updateLikes = async (tid: string, newStats: any): Promise<any> =>
+        TuitModel.updateOne(
+            {_id: tid},
+            {$set: {stats: newStats}}
+        );
 }
