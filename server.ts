@@ -38,6 +38,19 @@ app.use(cors({
     credentials: true,
     origin: ["http://localhost:3000", 'https://distracted-bohr-46decc.netlify.app/']
 }));
+let sess = {
+    secret: process.env.SECRET,
+    proxy: true,
+    cookie: {
+        secure: false,
+        sameSite: 'none'
+    }
+}
+
+if (process.env.ENV === 'PRODUCTION') {
+    app.set('trust proxy', 1) // trust first proxy
+    sess.cookie.secure = true // serve secure cookies
+}
 app.use(express.json());
 
 
@@ -56,19 +69,7 @@ const messageController = MessageController.getInstance(app);
 AuthenticationController(app);
 
 
-let sess = {
-    secret: process.env.SECRET,
-    proxy: true,
-    cookie: {
-        secure: true,
-        sameSite: 'none'
-    }
-}
 
-if (process.env.ENV === 'PRODUCTION') {
-    app.set('trust proxy', 1) // trust first proxy
-    sess.cookie.secure = true // serve secure cookies
-}
 
 
 
