@@ -49,14 +49,7 @@ app.use(cors({
     origin: 'http://localhost:3000'
 
 }));
-app.use((req, res, next) => {
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    res.header(
-        "Access-Control-Allow-Headers",
-        "Origin, X-Requested-With, Content-Type, Accept"
-    );
-    next();
-});
+
 
 let sess = {
     secret: process.env.SECRET,
