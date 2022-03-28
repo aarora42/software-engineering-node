@@ -23,6 +23,8 @@ import FollowController from "./controllers/FollowController";
 import BookmarkController from "./controllers/BookmarkController";
 import MessageController from "./controllers/MessageController";
 var cors = require('cors')
+const session = require("express-session");
+
 
 
 //mongo connection
@@ -33,8 +35,8 @@ mongoose.connect('mongodb+srv://anusha:fsePass@cluster0.lbwnn.mongodb.net/tuiter
 const app = express();
 app.use(cors({
     credentials: true,
-    origin: "http://localhost:3000"
-}))
+    origin: ["http://localhost:3000", 'https://distracted-bohr-46decc.netlify.app/']
+}));
 app.use(express.json());
 
 
@@ -50,13 +52,14 @@ const likeController = LikeController.getInstance(app);
 const followController = FollowController.getInstance(app);
 const bookmarkController = BookmarkController.getInstance(app);
 const messageController = MessageController.getInstance(app);
-const session = require("express-session");
 
 
 let sess = {
     secret: process.env.SECRET,
+    proxy: true,
     cookie: {
-        secure: false
+        secure: true,
+        sameSite: 'none'
     }
 }
 
