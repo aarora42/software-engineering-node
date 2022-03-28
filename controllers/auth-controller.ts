@@ -13,7 +13,7 @@ const AuthenticationController = (app: Express) => {
         const password = user.password;
         console.log(password)
         const existingUser = await userDao
-            .findUserByUsername(username);
+            .findUserByUsername(req.body.username);
         const match = await bcrypt.compare(password, existingUser.password);
 
         if (match) {
