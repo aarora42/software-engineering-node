@@ -13,19 +13,23 @@
  * service
  */
 
-import express from 'express';
+import express, {Request, Response} from 'express';
 import UserController from "./controllers/UserController";
 import TuitController from "./controllers/TuitController";
-import TuitDao from "./daos/TuitDao";
-import UserDao from "./daos/UserDao";
 import mongoose from "mongoose";
 import LikeController from "./controllers/LikeController";
 import FollowController from "./controllers/FollowController";
 import BookmarkController from "./controllers/BookmarkController";
 import MessageController from "./controllers/MessageController";
 import AuthenticationController from "./controllers/auth-controller";
-var cors = require('cors')
+import SessionController from "./controllers/SessionController";
+const cors = require('cors')
 const session = require("express-session");
+
+//mongo connection
+mongoose.connect('mongodb+srv://anusha:fsePass@cluster0.lbwnn.mongodb.net/tuiter?retryWrites=true&w=majority').then(() => {
+    console.log("Connected to DB");
+});
 const app = express();
 
 app.use(cors({
@@ -33,38 +37,27 @@ app.use(cors({
     origin: 'http://localhost:3000'
 
 }));
-//mongo connection
-mongoose.connect('mongodb+srv://anusha:fsePass@cluster0.lbwnn.mongodb.net/tuiter?retryWrites=true&w=majority').then(() => {
-    console.log("Connected to DB");
-});
-
-
-app.use((req, res, next) => {
-    res.setHeader("Access-Control-Allow-Origin", 'http://localhost:3000');
-    res.header(
-        "Access-Control-Allow-Headers",
-        "Origin, X-Requested-With, Content-Type, Accept"
-    );
-    next();
-});
-
-
-
 
 let sess = {
-    secret: process.env.SECRET,
-    proxy: true,
+    secret: process.env.EXPRESS_SESSION_SECRET,
+    saveUninitialized: true,
+    resave: true,
     cookie: {
-        secure: false,
-        sameSite: 'none'
+        sameSite: process.env.NODE_ENV === "production" ? 'none' : 'lax',
+        secure: process.env.NODE_ENV === "production",
     }
 }
 
-if (process.env.ENV === 'PRODUCTION') {
+if (process.env.NODE_ENV === 'production') {
     app.set('trust proxy', 1) // trust first proxy
-    sess.cookie.secure = true // serve secure cookies
 }
+
+
+app.use(session(sess))
 app.use(express.json());
+
+
+
 
 
 app.get('/hello', (req, res) =>
@@ -80,6 +73,7 @@ const followController = FollowController.getInstance(app);
 const bookmarkController = BookmarkController.getInstance(app);
 const messageController = MessageController.getInstance(app);
 AuthenticationController(app);
+SessionController(app);
 
 
 

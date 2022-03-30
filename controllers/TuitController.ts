@@ -63,12 +63,15 @@ export default class TuitController implements TuitControllerI {
         let userId = req.params.uid === "my" && req.session['profile'] ?
             // @ts-ignore
             req.session['profile']._id : req.params.uid;
-
-        console.log(userId);
+        if (userId === "my") {
+            res.sendStatus(503);
+            return;
+        }
 
         TuitController.tuitDao.createTuitByUser(userId, req.body)
             .then((tuit: Tuit) => res.json(tuit));
     }
+
 
     /**
      * Retrieves all tuits from the database for a particular user and returns
@@ -82,10 +85,14 @@ export default class TuitController implements TuitControllerI {
         let userId = req.params.uid === "my" && req.session['profile'] ?
             // @ts-ignore
             req.session['profile']._id : req.params.uid;
+        if (userId === "my") {
+            res.sendStatus(503);
+            return;
+        }
         TuitController.tuitDao.findAllTuitsByUser(userId)
             .then((tuits: Tuit[]) => res.json(tuits));
     }
-    /**
+        /**
      * Retrieves all tuits from the database and returns an array of tuits.
      * @param {Request} req Represents request from client
      * @param {Response} res Represents response to client, including the
@@ -156,8 +163,6 @@ export default class TuitController implements TuitControllerI {
     deleteTuitsByUser = (req: Request, res: Response) =>
         TuitController.tuitDao.deleteTuitsByUser(req.params.uid)
             .then(status => res.send(status));
-
-
 
 
 };
