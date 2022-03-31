@@ -13,23 +13,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-<<<<<<< HEAD
-    "@types/express-session": "^1.17.4",
-    "axios": "^0.26.1",
-=======
     "axios": "^0.25.0",
->>>>>>> f3f128028dce7c60ac61daec0c0e2a87ff6cc2ef
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.1",
     "cors": "^2.8.5",
     "express": "^4.17.2",
     "express-session": "^1.17.2",
-<<<<<<< HEAD
-    "jest": "^27.5.1",
-    "mongoose": "^6.1.7",
-=======
     "mongoose": "^6.2.1",
->>>>>>> f3f128028dce7c60ac61daec0c0e2a87ff6cc2ef
     "typescript": "^4.5.4"
   },
   "devDependencies": {

@@ -1,10 +1,16 @@
-import User from "../models/users/User";
 
-export default interface UserDaoI {
-    findAllUsers (): Promise<User[]>;
-    findUserById (uid: string): Promise<any>;
-    createUser (user: User): Promise<User>;
-    updateUser (uid: string, user: User): Promise<any>;
-    deleteUser (uid: string): Promise<any>;
-    deleteAllUsers (): Promise<any>;
+
+/**
+ * @file Declares RESTful API for User resource
+ */
+
+import {Request, Response} from "express";
+
+export default interface UserControllerI {
+    findAllUsers (req: Request, res: Response): void;
+    findUserById (req: Request, res: Response): void;
+    createUser (req: Request, res: Response): void;
+    updateUser (req: Request, res: Response): void;
+    deleteUser (req: Request, res: Response): void;
+    deleteAllUsers (req: Request, res: Response): void;
 };
