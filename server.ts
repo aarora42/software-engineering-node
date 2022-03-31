@@ -5,6 +5,7 @@
  *     <li>users</li>
  *     <li>tuits</li>
  *     <li>likes</li>
+<<<<<<< HEAD
  *     <li>follows</li>
  *     <li>bookmarks</li>
  *     <li>messages</li>
@@ -30,12 +31,21 @@ const session = require("express-session");
 mongoose.connect('mongodb+srv://anusha:fsePass@cluster0.lbwnn.mongodb.net/tuiter?retryWrites=true&w=majority').then(() => {
     console.log("Connected to DB");
 });
-const app = express();
 
+// // build the connection string
+// const PROTOCOL = "mongodb+srv";
+// const DB_USERNAME = process.env.DB_USERNAME;
+// const DB_PASSWORD = process.env.DB_PASSWORD;
+// const HOST = "cluster0.m8jeh.mongodb.net";
+// const DB_NAME = "myFirstDatabase";
+// const DB_QUERY = "retryWrites=true&w=majority";
+// const connectionString = `${PROTOCOL}://${DB_USERNAME}:${DB_PASSWORD}@${HOST}/${DB_NAME}?${DB_QUERY}`;// connect to the database
+// mongoose.connect(connectionString);
+
+const app = express();
 app.use(cors({
     credentials: true,
-    origin: 'https://distracted-bohr-46decc.netlify.app'
-
+    origin: process.env.CORS_ORIGIN
 }));
 
 let sess = {
@@ -52,16 +62,14 @@ if (process.env.NODE_ENV === 'production') {
     app.set('trust proxy', 1) // trust first proxy
 }
 
-
 app.use(session(sess))
 app.use(express.json());
 
 
-
-
-
 app.get('/hello', (req, res) =>
     res.send('Hello World!'));
+app.get('/', (req: Request, res: Response) =>
+    res.send('Welcome!'));
 
 app.get('/add/:a/:b', (req, res) => {
     res.send(req.params.a + req.params.b);
@@ -75,11 +83,9 @@ const messageController = MessageController.getInstance(app);
 AuthenticationController(app);
 SessionController(app);
 
-
-
-
-
-
-
+/**
+ * Start a server listening at port 4000 locally
+ * but use environment variable PORT on Heroku if available.
+ */
 const PORT = 4000;
 app.listen(process.env.PORT || PORT);
