@@ -7,11 +7,11 @@ const saltRounds = 10;
 const AuthenticationController = (app: Express) => {
 
     const userDao: UserDao = UserDao.getInstance();
-
     const login = async (req: Request, res: Response) => {
 
         console.log("==> login")
         console.log("==> req.session")
+        console.log(req.session)
 
         const user = req.body;
         const username = user.username;
@@ -20,7 +20,7 @@ const AuthenticationController = (app: Express) => {
         const existingUser = await userDao
             .findUserByUsername(username);
         const match = await bcrypt.compare(password, existingUser.password);
-        //const match = password === existingUser.password;
+
         if (match) {
             existingUser.password = '*****';
             // @ts-ignore
