@@ -34,7 +34,7 @@ const app = express();
 
 app.use(cors({
     credentials: true,
-    origin: 'http://localhost:3000'
+    origin: 'https://distracted-bohr-46decc.netlify.app'
 
 }));
 
