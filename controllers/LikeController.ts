@@ -42,7 +42,7 @@ export default class LikeController implements LikeControllerI {
             app.get("/api/tuits/:tid/likes", LikeController.likeController.findAllUsersThatLikedTuit);
             app.post("/api/users/:uid/likes/:tid", LikeController.likeController.userLikesTuit);
             app.delete("/api/users/:uid/unlikes/:tid", LikeController.likeController.userUnlikesTuit);
-            app.put("/api/users/:uid/likes/:tid", LikeController.likeController.userTogglesTuitLikes);
+            app.put("api/users/:uid/likes/:tid", LikeController.likeController.userTogglesTuitLikes);
             app.put("/api/users/:uid/unlikes/:tid", LikeController.likeController.userTogglesTuitUnlikes);
 
         }
@@ -121,9 +121,8 @@ export default class LikeController implements LikeControllerI {
         const tid = req.params.tid;
         // @ts-ignore
         const profile = req.session['profile'];
-        // const userId = uid === "me" && profile ?
-        //     profile._id : uid;
-        const userId = profile._id;
+        const userId = uid === "me" && profile ?
+            profile._id : uid;
         try {
             const userAlreadyLikedTuit = await likeDao.findUserLikesTuit(userId, tid);
             const howManyLikedTuit = await likeDao.countHowManyLikedTuit(tid);
