@@ -7,16 +7,12 @@ const saltRounds = 10;
 const AuthenticationController = (app: Express) => {
 
     const userDao: UserDao = UserDao.getInstance();
+
     const login = async (req: Request, res: Response) => {
-
-        console.log("==> login")
-        console.log("==> req.session")
-        console.log(req.session)
-
         const user = req.body;
         const username = user.username;
         const password = user.password;
-        console.log(password)
+        // console.log(password)
         const existingUser = await userDao
             .findUserByUsername(username);
         const match = await bcrypt.compare(password, existingUser.password);
@@ -32,10 +28,6 @@ const AuthenticationController = (app: Express) => {
     }
 
     const register = async (req: Request, res: Response) => {
-        console.log("==> register")
-        console.log("==> req.session")
-        console.log(req.session)
-
         const newUser = req.body;
         const password = newUser.password;
         const hash = await bcrypt.hash(password, saltRounds);
