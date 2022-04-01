@@ -2,7 +2,19 @@ import {Request, Response, Express} from "express";
 import UserDao from "../daos/UserDao";
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
-
+/**
+ * @class AuthenticationController Implements RESTful Web service API for follows resource.
+ * Defines the following HTTP endpoints:
+ * <ul>
+ *     <li>POST /api/auth/register to register a new user
+ *     </li>
+ *     <li>POST /api/auth/profile to generate a profile for the created user
+ *     </li>
+ *     <li>POST /api/auth/logout to  log out of a session
+ *     </li>
+ *     <li>POST /api/auth/login to log in to a new session </li>
+ * </ul>
+ */
 const AuthenticationController = (app: Express) => {
     
     const userDao: UserDao = UserDao.getInstance();
