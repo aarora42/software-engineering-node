@@ -10,24 +10,24 @@ import DislikeControllerI from "../interfaces/DislikeControllerI";
 import DislikeDao from "../daos/DislikeDao";
 
 /**
- * @class LikeController Implements RESTful Web service API for likes resource.
+ * @class DislikeController Implements RESTful Web service API for likes resource.
  import TuitDao from "../daos/TuitDao";
 
  /**
  * @class TuitController Implements RESTful Web service API for likes resource.
  * Defines the following HTTP endpoints:
  * <ul>
- *     <li>GET /api/users/:uid/likes to retrieve all the tuits liked by a user
+ *     <li>GET /api/users/:uid/dislikes to retrieve all the tuits liked by a user
  *     </li>
- *     <li>GET /api/tuits/:tid/likes to retrieve all users that liked a tuit
+ *     <li>GET /api/tuits/:tid/dislikes to retrieve all users that liked a tuit
  *     </li>
- *     <li>POST /api/users/:uid/likes/:tid to record that a user likes a tuit
+ *     <li>POST /api/users/:uid/dislikes/:tid to record that a user likes a tuit
  *     </li>
- *     <li>DELETE /api/users/:uid/unlikes/:tid to record that a user
+ *     <li>DELETE /api/users/:uid/undislikes/:tid to record that a user
  *     no londer likes a tuit</li>
  * </ul>
- * @property {LikeDao} likeDao Singleton DAO implementing likes CRUD operations
- * @property {LikeController} LikeController Singleton controller implementing
+ * @property {DislikeDao} likeDao Singleton DAO implementing likes CRUD operations
+ * @property {DislikeController} LikeController Singleton controller implementing
  * RESTful Web service API
  */
 export default class DislikeController implements DislikeControllerI {
@@ -38,7 +38,7 @@ export default class DislikeController implements DislikeControllerI {
      * Creates singleton controller instance
      * @param {Express} app Express instance to declare the RESTful Web service
      * API
-     * @return LikeController
+     * @return DislikeController
      * @return TuitController
      */
     public static getInstance = (app: Express): DislikeController => {
@@ -58,9 +58,9 @@ export default class DislikeController implements DislikeControllerI {
     private constructor() {}
 
     /**
-     * Retrieves all users that liked a tuit from the database
+     * Retrieves all users that disliked a tuit from the database
      * @param {Request} req Represents request from client, including the path
-     * parameter tid representing the liked tuit
+     * parameter tid representing the disliked tuit
      * @param {Response} res Represents response to client, including the
      * body formatted as JSON arrays containing the user objects
      */
@@ -69,9 +69,9 @@ export default class DislikeController implements DislikeControllerI {
             .then(dislikes => res.json(dislikes));
 
     /**
-     * Retrieves all tuits liked by a user from the database
+     * Retrieves all tuits disliked by a user from the database
      * @param {Request} req Represents request from client, including the path
-     * parameter uid representing the user liked the tuits
+     * parameter uid representing the user disliked the tuits
      * @param {Response} res Represents response to client, including the
      * body formatted as JSON arrays containing the tuit objects that were liked
      */
@@ -93,10 +93,10 @@ export default class DislikeController implements DislikeControllerI {
 
     /**
      * @param {Request} req Represents request from client, including the
-     * path parameters uid and tid representing the user that is liking the tuit
-     * and the tuit being liked
+     * path parameters uid and tid representing the user that is disliking the tuit
+     * and the tuit being disliked
      * @param {Response} res Represents response to client, including the
-     * body formatted as JSON containing the new likes that was inserted in the
+     * body formatted as JSON containing the new dislikes that was inserted in the
      * database
      */
     userTogglesTuitDislikes = async (req: Request, res: Response) => {
